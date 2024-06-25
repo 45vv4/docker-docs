@@ -1,12 +1,15 @@
 # Virtuelle Maschinen vs Container / Docker
 
 ## Bild Virtuelle Maschinen 
-![Virtuelle Maschinen](./images/Bild_Virtuelle_Maschinen.png)
+![Virtuelle Maschinen](./images/Bild_Virtuelle_Maschinen.jpg)
 
-![Virtuelle Maschinen](./images/Bild2_Virtuelle_Maschinen.png)
+![Virtuelle Maschinen](./images/Bild2_Virtuelle_Maschinen.jpg)
 
 ## Bild Container / Docker 
-![Container Maschinen / Docker](./images/Bild_Container_Doker.png)
+![Container Maschinen / Docker](./images/Bild_Container_Docker.jpg)
+
+## Unterschied 
+![Unterschied](./images/UnterschiedVirtuelleMaschinenVSContainer_Docke.jpg)
 
 ### 1. Architektur
 
