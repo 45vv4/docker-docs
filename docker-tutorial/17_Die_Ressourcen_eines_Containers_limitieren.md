@@ -68,3 +68,105 @@ Suche nach dem Abschnitt `HostConfig` in der Ausgabe. Hier findest du die CPU un
 - **Überprüfen:** Nutze `docker inspect`, um die gesetzten Limits eines laufenden Containers zu überprüfen.
 
 Diese Methoden ermöglichen es dir, die Ressourcen eines Containers zu kontrollieren und so sicherzustellen, dass er nicht mehr als die zugewiesenen Ressourcen verbraucht.
+
+
+### Docker Tutorial #19 - In eine Datei loggen (Docker Compose Edition)
+
+In diesem Tutorial erfahren Sie, wie Sie Docker-Logs in Dateien speichern können, wenn Sie Docker Compose verwenden. Das Speichern von Logs in Dateien ist hilfreich für die spätere Analyse und Archivierung. Wir konfigurieren die Docker-Compose-Datei für das File-Logging und zeigen die notwendigen Einstellungen.
+
+#### 1. Docker Compose Datei-Konfiguration
+
+Docker Compose ermöglicht es Ihnen, Log-Optionen für einzelne Dienste direkt in der `docker-compose.yml`-Datei zu definieren. Wir verwenden den `json-file` Log-Driver und passen die Log-Optionen an.
+
+#### Beispiel `docker-compose.yml`
+
+Hier ist ein Beispiel für eine `docker-compose.yml`-Datei, in der die Log-Optionen für einen Nginx-Dienst konfiguriert sind:
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    image: nginx
+    container_name: nginx_container
+    ports:
+      - "80:80"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+```
+
+In diesem Beispiel:
+
+- **`driver: "json-file"`**: Setzt den Log-Driver auf `json-file`.
+- **`max-size: "10m"`**: Begrenzt die maximale Größe einer Log-Datei auf 10 Megabyte.
+- **`max-file: "3"`**: Begrenzt die Anzahl der Log-Dateien auf 3.
+
+#### 2. Docker Compose Stack starten
+
+Nachdem Sie Ihre `docker-compose.yml`-Datei konfiguriert haben, können Sie den Stack mit den folgenden Befehlen starten:
+
+```bash
+docker-compose up -d
+```
+
+Dieser Befehl startet alle definierten Dienste im Hintergrund.
+
+#### 3. Logs anzeigen
+
+Sie können die Logs der einzelnen Dienste mit dem folgenden Befehl anzeigen:
+
+```bash
+docker-compose logs <service-name>
+```
+
+Beispiel:
+
+```bash
+docker-compose logs web
+```
+
+#### 4. Log-Optionen für mehrere Dienste
+
+Wenn Sie mehrere Dienste haben, können Sie die Log-Optionen für jeden Dienst individuell konfigurieren. Hier ist ein erweitertes Beispiel:
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    image: nginx
+    container_name: nginx_container
+    ports:
+      - "80:80"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  database:
+    image: postgres
+    container_name: postgres_container
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "5"
+```
+
+In diesem Beispiel haben wir zwei Dienste (`web` und `database`), und jeder Dienst hat seine eigenen Log-Optionen.
+
+#### 5. Logs in benutzerdefinierte Dateien umleiten
+
+Falls Sie Logs in eine spezifische Datei außerhalb des Standard-Docker-Verzeichnisses umleiten möchten, können Sie symbolische Links verwenden. Dies wird allerdings auf Containerebene und nicht direkt über Docker Compose konfiguriert.
+
+#### Fazit
+
+Durch die Konfiguration der `docker-compose.yml`-Datei für das File-Logging können Sie Logs effizient verwalten und speichern. Diese Logs sind nützlich für die Analyse und Fehlerbehebung Ihrer Anwendungen. Nutzen Sie die oben genannten Schritte, um Ihre Docker-Logs in Dateien zu speichern und nach Bedarf anzupassen.
