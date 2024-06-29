@@ -43,6 +43,10 @@ Der Befehl docker ps listet alle aktuell laufenden Docker-Container auf Ihrem Sy
 ```sh
 docker ps
 ```
+Alle anzeigen: 
+```sh
+docker ps -a
+```
 
 ### Docker-Container löschen
 Der Befehl `docker rm <container_id>` entfernt einen oder mehrere gestoppte Docker-Container von Ihrem System.
