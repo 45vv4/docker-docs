@@ -42,6 +42,7 @@ docker rmi <image-id>
 Der Befehl docker ps listet alle aktuell laufenden Docker-Container auf Ihrem System auf, einschließlich deren Container-ID, Image, Namen, Status und Portinformationen.
 ```sh
 docker ps
+
 ```
 Alle anzeigen: 
 ```sh
