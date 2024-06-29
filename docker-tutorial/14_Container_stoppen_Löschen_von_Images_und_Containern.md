@@ -62,7 +62,21 @@ Um alle Container zu löschen, können Sie einen Befehl verwenden, der alle Cont
 docker rm $(docker ps -a -q)
 ```
 
-#### 5. Docker-Images löschen
+#### 5. Ungenutzte Container löschen
+
+Um alle gestoppten Container zu löschen, die nicht mehr verwendet werden, können Sie den folgenden Befehl verwenden:
+
+```bash
+docker container prune
+```
+
+Dieser Befehl fragt zur Bestätigung, ob Sie alle gestoppten Container löschen möchten. Sie können die Option `-f` (force) verwenden, um die Bestätigung zu umgehen:
+
+```bash
+docker container prune -f
+```
+
+#### 6. Docker-Images löschen
 
 Um ein Docker-Image zu löschen, verwenden wir den Befehl `docker rmi` gefolgt von der Image-ID oder dem Tag des Images:
 
@@ -75,7 +89,7 @@ Beispiel:
 docker rmi my_image:latest
 ```
 
-#### 6. Mehrere Images gleichzeitig löschen
+#### 7. Mehrere Images gleichzeitig löschen
 
 Sie können mehrere Images gleichzeitig löschen, indem Sie mehrere Image-IDs oder Tags angeben:
 
@@ -88,7 +102,7 @@ Beispiel:
 docker rmi image1 image2 image3
 ```
 
-#### 7. Ungenutzte Images löschen
+#### 8. Ungenutzte Images löschen
 
 Um alle ungenutzten Docker-Images zu löschen, die nicht mehr von einem Container verwendet werden, können Sie den folgenden Befehl verwenden:
 
@@ -108,6 +122,7 @@ docker system prune
 - **Container löschen:** `docker rm <container_id>`
 - **Laufende Container erzwingen und löschen:** `docker rm -f <container_id>`
 - **Alle Container löschen:** `docker rm $(docker ps -a -q)`
+- **Ungenutzte Container löschen:** `docker container prune`
 - **Image löschen:** `docker rmi <image_id>`
 - **Mehrere Images löschen:** `docker rmi <image_id_1> <image_id_2>`
 - **Ungenutzte Images löschen:** `docker image prune`
