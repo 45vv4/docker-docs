@@ -1,3 +1,5 @@
+[Docker Tutorial #19 - In eine Datei loggen](https://www.youtube.com/watch?v=JwKPbh-6K_Q&list=PLNmsVeXQZj7oea6IDCLzpKe5XfLmWCwgr&index=21)
+
 Um Docker-Logs in Dateien zu speichern, müssen wir den Docker-Daemon so konfigurieren, dass er das File-Logging verwendet. Hier sind die Schritte, um dies zu erreichen:
 
 ### Schritt 1: Docker Daemon konfigurieren
