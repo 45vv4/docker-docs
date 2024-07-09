@@ -1,0 +1,201 @@
+
+nikla@MSI MINGW64 /c/0_projects/docker-example (main)
+$ git checkout -b docker-compose-example
+Switched to a new branch 'docker-compose-example'
+
+nikla@MSI MINGW64 /c/0_projects/docker-example (docker-compose-example)
+$ git branch
+* docker-compose-example
+  main
+
+nikla@MSI MINGW64 /c/0_projects/docker-example (docker-compose-example)
+$ node
+Welcome to Node.js v18.15.0.
+Type ".help" for more information.
+>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+> exit
+Uncaught ReferenceError: exit is not defined
+>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+>
+
+nikla@MSI MINGW64 /c/0_projects/docker-example (docker-compose-example)
+$ ^C
+
+nikla@MSI MINGW64 /c/0_projects/docker-example (docker-compose-example)
+$ ^C
+
+nikla@MSI MINGW64 /c/0_projects/docker-example (docker-compose-example)
+$ ^C
+
+nikla@MSI MINGW64 /c/0_projects/docker-example (docker-compose-example)
+$ cd api/
+
+nikla@MSI MINGW64 /c/0_projects/docker-example/api (docker-compose-example)
+$ npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help init` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg>` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+package name: (api)
+version: (1.0.0)
+description:
+entry point: (index.js)
+test command:
+git repository:
+keywords:
+author:
+license: (ISC)
+About to write to C:\0_projects\docker-example\api\package.json:
+
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
+
+
+Is this OK? (yes) yes
+
+nikla@MSI MINGW64 /c/0_projects/docker-example/api (docker-compose-example)
+$ node app.js
+Server started.  (info)
+MSI::api@1.0.0 (C:\0_projects\docker-example\api\app.js)
+17:47:57.081@2024-05-06 2032#0
+3000
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+nikla@MSI MINGW64 /c/0_projects/docker-example/api (docker-compose-example)
+$ node -version
+C:\Program Files\nodejs\node.exe: bad option: -version
+
+nikla@MSI MINGW64 /c/0_projects/docker-example/api (docker-compose-example)
+$ node
+Welcome to Node.js v18.15.0.
+Type ".help" for more information.
+>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+>
+
+nikla@MSI MINGW64 /c/0_projects/docker-example/api (docker-compose-example)
+$ ^C
+
+nikla@MSI MINGW64 /c/0_projects/docker-example/api (docker-compose-example)
+$ ^C
+
+nikla@MSI MINGW64 /c/0_projects/docker-example/api (docker-compose-example)
+$ docker build -t api .
+[+] Building 6.9s (8/10)                                                                                                                                                                                                                                                                             docker:default
+ => [internal] load build definition from Dockerfile                                                                                                                                                                                                                                                           0.1s
+ => => transferring dockerfile: 304B                                                                                                                                                                                                                                                                           0.0s
+ => [internal] load metadata for docker.io/library/node:18.15.0-alpine                                                                                                                                                                                                                                         6.6s
+ => [internal] load .dockerignore                                                                                                                                                                                                                                                                              0.0s
+ => => transferring context: 60B                                                                                                                                                                                                                                                                               0.0s
+ => [internal] load build context                                                                                                                                                                                                                                                                              0.1s
+ => => transferring context: 40.42kB                                                                                                                                                                                                                                                                           0.0s
+ => CANCELED [1/6] FROM docker.io/library/node:18.15.0-alpine@sha256:47d97b93629d9461d64197773966cc49081cf4463b1b07de5a38b6bd5acfbe9d                                                                                                                                                                          0.1s
+ => => resolve docker.io/library/node:18.15.0-alpine@sha256:47d97b93629d9461d64197773966cc49081cf4463b1b07de5a38b6bd5acfbe9d                                                                                                                                                                                   0.0s
+ => => sha256:47d97b93629d9461d64197773966cc49081cf4463b1b07de5a38b6bd5acfbe9d 1.43kB / 1.43kB                                                                                                                                                                                                                 0.0s
+ => => sha256:a3f2350bd3eb48525f801b57934300c11aa3610086b708854ab1c1045c018519 1.16kB / 1.16kB                                                                                                                                                                                                                 0.0s
+ => => sha256:305c985a481fc143f40c3a5c1cb398756057851f3ab748e381c76fd1ce5b0177 6.48kB / 6.48kB                                                                                                                                                                                                                 0.0s
+ => CACHED [2/6] WORKDIR /home/node                                                                                                                                                                                                                                                                            0.0s
+ => CACHED [3/6] COPY --chown=node:node ./package.json ./package.json                                                                                                                                                                                                                                          0.0s
+ => ERROR [4/6] COPY --chown=node:node ./lock-package.json ./lock-package.json                                                                                                                                                                                                                                 0.0s
+------
+ > [4/6] COPY --chown=node:node ./lock-package.json ./lock-package.json:
+------
+Dockerfile:7
+--------------------
+   5 |
+   6 |     COPY --chown=node:node ./package.json ./package.json
+   7 | >>> COPY --chown=node:node ./lock-package.json ./lock-package.json
+   8 |
+   9 |     RUN npm install --production
+--------------------
+ERROR: failed to solve: failed to compute cache key: failed to calculate checksum of ref 9317d627-79c8-4731-b596-26b51fc96b64::45shujdqet9o4k46wmgsj44nz: "/lock-package.json": not found
+
+View build details: docker-desktop://dashboard/build/default/default/xdzkwpvmjo0doenfnbwt1811o
+
+nikla@MSI MINGW64 /c/0_projects/docker-example/api (docker-compose-example)
+$ docker build -t api .
+[+] Building 158.1s (11/11) FINISHED                                                                                                                                                                                                                                                                 docker:default
+ => [internal] load build definition from Dockerfile                                                                                                                                                                                                                                                           0.0s
+ => => transferring dockerfile: 304B                                                                                                                                                                                                                                                                           0.0s
+ => [internal] load metadata for docker.io/library/node:18.15.0-alpine                                                                                                                                                                                                                                         0.6s
+ => [internal] load .dockerignore                                                                                                                                                                                                                                                                              0.0s
+ => => transferring context: 60B                                                                                                                                                                                                                                                                               0.0s
+ => [1/6] FROM docker.io/library/node:18.15.0-alpine@sha256:47d97b93629d9461d64197773966cc49081cf4463b1b07de5a38b6bd5acfbe9d                                                                                                                                                                                 142.5s
+ => => resolve docker.io/library/node:18.15.0-alpine@sha256:47d97b93629d9461d64197773966cc49081cf4463b1b07de5a38b6bd5acfbe9d                                                                                                                                                                                   0.1s
+ => => sha256:305c985a481fc143f40c3a5c1cb398756057851f3ab748e381c76fd1ce5b0177 6.48kB / 6.48kB                                                                                                                                                                                                                 0.0s
+ => => sha256:f56be85fc22e46face30e2c3de3f7fe7c15f8fd7c4e5add29d7f64b87abdaa09 3.37MB / 3.37MB                                                                                                                                                                                                                 6.8s
+ => => sha256:51fa4270e0ccb40f31d39a195bac1ff5d1070909c60d8341690748af6abee321 47.54MB / 47.54MB                                                                                                                                                                                                             136.1s
+ => => sha256:a89e758f145e81ebe13f42f7831a348f212dcb3c17bc269201752bb76a9e52cf 2.35MB / 2.35MB                                                                                                                                                                                                                 4.1s
+ => => sha256:47d97b93629d9461d64197773966cc49081cf4463b1b07de5a38b6bd5acfbe9d 1.43kB / 1.43kB                                                                                                                                                                                                                 0.0s
+ => => sha256:a3f2350bd3eb48525f801b57934300c11aa3610086b708854ab1c1045c018519 1.16kB / 1.16kB                                                                                                                                                                                                                 0.0s
+ => => sha256:d3f921cbf16e91105a848c0cf6c365c0d7530152d264ce4bdd914a0a3ee00f82 453B / 453B                                                                                                                                                                                                                     5.0s
+ => => extracting sha256:f56be85fc22e46face30e2c3de3f7fe7c15f8fd7c4e5add29d7f64b87abdaa09                                                                                                                                                                                                                      0.2s
+ => => extracting sha256:51fa4270e0ccb40f31d39a195bac1ff5d1070909c60d8341690748af6abee321                                                                                                                                                                                                                      5.7s
+ => => extracting sha256:a89e758f145e81ebe13f42f7831a348f212dcb3c17bc269201752bb76a9e52cf                                                                                                                                                                                                                      0.2s
+ => => extracting sha256:d3f921cbf16e91105a848c0cf6c365c0d7530152d264ce4bdd914a0a3ee00f82                                                                                                                                                                                                                      0.0s
+ => [internal] load build context                                                                                                                                                                                                                                                                              0.1s
+ => => transferring context: 436B                                                                                                                                                                                                                                                                              0.0s
+ => [2/6] WORKDIR /home/node                                                                                                                                                                                                                                                                                   1.5s
+ => [3/6] COPY --chown=node:node ./package.json ./package.json                                                                                                                                                                                                                                                 0.1s
+ => [4/6] COPY --chown=node:node ./package-lock.json ./package-lock.json                                                                                                                                                                                                                                       0.6s
+ => [5/6] RUN npm install --production                                                                                                                                                                                                                                                                        11.6s
+ => [6/6] COPY --chown=node:node . .                                                                                                                                                                                                                                                                           0.1s
+ => exporting to image                                                                                                                                                                                                                                                                                         1.0s
+ => => exporting layers                                                                                                                                                                                                                                                                                        0.9s
+ => => writing image sha256:6a6037cdcdfac7ced9b6e70e0974997b1a288479a927c1cccb87c97fce7379c4                                                                                                                                                                                                                   0.0s
+ => => naming to docker.io/library/api                                                                                                                                                                                                                                                                         0.0s
+
+View build details: docker-desktop://dashboard/build/default/default/emq2dexeavg4hdfv4k9e9bfix
+
+What's Next?
+  1. Sign in to your Docker account → docker login
+  2. View a summary of image vulnerabilities and recommendations → docker scout quickview
+
+nikla@MSI MINGW64 /c/0_projects/docker-example/api (docker-compose-example)
+$ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+api          latest    6a6037cdcdfa   2 minutes ago   193MB
+postgres     10.5      3fce051f5a48   5 years ago     228MB
+
+nikla@MSI MINGW64 /c/0_projects/docker-example/api (docker-compose-example)
+$ docker run -d --init -p 3000:3000 --name api api
+fd61f88435c662f21274523d0ad388f0a0c5373ecce82714e0887c75f296d16a
+
+nikla@MSI MINGW64 /c/0_projects/docker-example/api (docker-compose-example)
+$ curl http://locaalhost:3000
+curl: (6) Could not resolve host: locaalhost
+
+nikla@MSI MINGW64 /c/0_projects/docker-example/api (docker-compose-example)
+$ curl
+curl: try 'curl --help' or 'curl --manual' for more information
+
+nikla@MSI MINGW64 /c/0_projects/docker-example/api (docker-compose-example)
+$ docker ps
+CONTAINER ID   IMAGE           COMMAND                  CREATED         STATUS         PORTS                    NAMES
+fd61f88435c6   api             "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes   0.0.0.0:3000->3000/tcp   api
+d9851be6c16f   postgres:10.5   "docker-entrypoint.s…"   4 hours ago     Up 4 hours     0.0.0.0:5432->5432/tcp   database-postgres-1
+
+nikla@MSI MINGW64 /c/0_projects/docker-example/api (docker-compose-example)
+$ docker kill api && docker rm api
+api
+api
+
+nikla@MSI MINGW64 /c/0_projects/docker-example/api (docker-compose-example)
+$
